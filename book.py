@@ -21,6 +21,14 @@ class Book():
     def get_category(self):
         return self.category
 
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "link": self.link,
+            "in_stock": self.in_stock,
+            "category": self.category
+        }
+
     def __repr__(self):
         return self.__str__()
 
