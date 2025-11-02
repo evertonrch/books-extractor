@@ -4,22 +4,22 @@ import json
 class Book():
 
     def __init__(self, title, link, in_stock, category):
-        self.__title = title
-        self.__link = link
-        self.__in_stock = in_stock
-        self.__category = category
+        self.title = title
+        self.link = link
+        self.in_stock = in_stock
+        self.category = category
 
     def get_title(self):
-        return self.__title
+        return self.title
 
     def get_link(self):
-        return self.__link
+        return self.link
 
     def get_in_stock(self):
-        return self.__in_stock
+        return self.in_stock
 
     def get_category(self):
-        return self.__category
+        return self.category
 
     def __repr__(self):
         return self.__str__()
