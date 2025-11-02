@@ -3,7 +3,7 @@ import json
 from logger import logger
 from scraper import Scraper
 
-URL = "https://books.toscrape.com/index.html"
+URL = "https://books.toscrape.com"
 
 
 def to_json(books):

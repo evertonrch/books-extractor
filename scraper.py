@@ -40,7 +40,7 @@ class Scraper():
                 logger.error(f"Algo deu errado ao fazer o scraper: {e}")
 
     def process_category(self, link, driver):
-        driver.get(f"https://books.toscrape.com/{link.get('href')}")
+        driver.get(f"{self.url}/{link.get('href')}")
 
         while True:
             soup = BeautifulSoup(driver.page_source, "html.parser")
