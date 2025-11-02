@@ -63,9 +63,12 @@ class Scraper():
 
     def create_book_item(self, book, category_title):
         title = book.find("h3").a.text.strip()
-        price = book.find("p", class_="price_color").text
+        price = self.to_number(book)
         in_stock = self.has_stock(book)
         return Book(title, price, in_stock, category_title)
+
+    def to_number(self, book):
+        return float(book.find("p", class_="price_color").text[1:])
 
     def has_stock(self, book):
         return True if "ok" in book.find("p", class_="instock availability").i["class"][0] else False
