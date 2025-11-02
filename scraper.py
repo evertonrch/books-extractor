@@ -39,10 +39,11 @@ class Scraper():
         while True:
             soup = BeautifulSoup(driver.page_source, "html.parser")
 
+            category_title = soup.find("div", class_="page-header").h1.text
             books_div = soup.find("section").find_all("div")[1]
             book_rows = books_div.ol.find_all("li")
             for book in book_rows:
-                book = self.create_book_item(book)
+                book = self.create_book_item(book, category_title)
                 self.books.append(book)
 
             try:
@@ -52,11 +53,11 @@ class Scraper():
             except NoSuchElementException:
                 break
 
-    def create_book_item(self, book):
+    def create_book_item(self, book, category_title):
         title = book.find("h3").a.text.strip()
         price = book.find("p", class_="price_color").text
         in_stock = True if "ok" in book.find("p", class_="instock availability").i["class"][0] else False  # verifica se tem 'ok' na classe
-        return Book(title, price, in_stock)
+        return Book(title, price, in_stock, category_title)
 
     def get_books(self):
         return self.books
