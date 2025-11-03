@@ -71,7 +71,7 @@ class Scraper():
         return float(book.find("p", class_="price_color").text[1:])
 
     def has_stock(self, book):
-        return True if "ok" in book.find("p", class_="instock availability").i["class"][0] else False
+        return "ok" in book.find("p", class_="instock availability").i["class"][0]
 
     def get_books(self):
         return self.books
